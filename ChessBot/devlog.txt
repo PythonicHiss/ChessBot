@@ -1,0 +1,25 @@
+04/08/24 - Project beginnings:
+This project may be too big, and may be too complicated to learn in the 5 days I have given myself - but that will not stop me from trying. By the end of this I hope to have learnt alot about
+chess bot mechanics, best move selection, decision tree implementation? and managing a project with multiple unique moving parts that must function as one. This is very exciting for me as I am
+sure there will be alot of problems and learning opportunities each day. 
+I will be updating this log with my daily progress, goals for the next days, challenges and general thoughts as I go through. 
+//
+Today I completed: 
+    - Game board
+    - Game pieces + starting positions 
+    - Implemented the board to remember game position
+    - Began work on the drag and drop feature
+    - Movement + Captures
+//
+
+05/08/24 -
+
+
+
+
+
+
+// USEFUL RESOURCES //
+https://www.chessprogramming.org/Main_Page
+Colours - https://coolors.co/palettes/trending
+Pieces - https://github.com/lichess-org/lila/tree/master/public/piece
