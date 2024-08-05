@@ -1,3 +1,6 @@
+Total Work/Learning Hours: 16
+
+
 04/08/24 - Project beginnings:
 This project may be too big, and may be too complicated to learn in the 5 days I have given myself - but that will not stop me from trying. By the end of this I hope to have learnt alot about
 chess bot mechanics, best move selection, decision tree implementation? and managing a project with multiple unique moving parts that must function as one. This is very exciting for me as I am
@@ -12,7 +15,27 @@ Today I completed:
     - Movement + Captures
 //
 
-05/08/24 -
+05/08/24 - BitBoards and Pieces
+Initial thoughts: Now realising I need to restructure all the code into OOP and change the boards and movement under the hood to use bitboards to make the later stages of alphabeta pruning, minimax 
+and other computations faster. Not feeling too good about this task but I am sure I will learn alot and more coding never hurt anyone. 
+
+                **I am quickly realising that this project is turning into a comprehensive study of bitwise operations and bit manipulation**
+
+There was a big learning curve with this session, tomorrow will feel alot easier I'm sure. I look forward to the next steps of implementation where hopefully I will have completed legal move checker! 
+In my mind, this is half the battle as the pruning and board state selection is alot more up my alley :D
+Final thought from today are that the code feels like a step back as I have lost some features, but have made leaps and bounds in understanding of the methods I will be using moving forwards, so I see 
+this as a win. 
+//
+Today I completed: 
+    - Reworked board to function with new bitboard
+    - Began structuring bitboards
+    - Got the visuals/piece selection working again (WIP)
+    - Many hours of research and reading 
+//
+
+
+06/08/24 - 
+
 
 
 
@@ -23,3 +46,8 @@ Today I completed:
 https://www.chessprogramming.org/Main_Page
 Colours - https://coolors.co/palettes/trending
 Pieces - https://github.com/lichess-org/lila/tree/master/public/piece
+Well documented implementation of bitboard chess - https://github.com/cglouch/snakefish/tree/master         // Big inspiration for my own implementation!
+Video - https://youtu.be/U4ogK0MIzqk 
+Video series (In C) - https://www.youtube.com/playlist?list=PLmN0neTso3Jxh8ZIylk74JpwfiWNI76Cs
+
+
