@@ -1,7 +1,5 @@
-"""WIP - Needs severe restructuring for drag and drop features and to draw from BitBoards etc for moves and update bitboard with moves"""
-
-
 import pygame as p
+import numpy as np
 from Pieces import ChessBoard, Piece
 
 #Colours
@@ -12,35 +10,27 @@ WHITE = (250,237,205)
 pieces = {}
 
 """Map bit positions to board coordinates"""
-def bitboard_to_board(bitboard, piece_name):
-    #Convert np uint64 to int for bitwise op
-    bitboard = int(bitboard)
+def BBLocToBoard(chessboard):
     board = [['..' for _ in range(8)] for _ in range(8)]
-    #piece_name matchs names in pieces dictionary  WIP
-    piece_mapping = {
-        "KINGWHITE": 'wK', "QUEENWHITE": 'wQ', "BISHOPWHITE": 'wB',
-        "KNIGHTWHITE": 'wN', "ROOKWHITE": 'wR', "PAWNWHITE": 'wP',
-        "PAWNBLACK": 'bP', "ROOKBLACK": 'bR', "KNIGHTBLACK": 'bN',
-        "BISHOPBLACK": 'bB', "QUEENBLACK": 'bQ', "KINGBLACK": 'bK'
-    }
-    piece_name = piece_mapping.get(piece_name, '..')
-    for pos in range(64):
-        if (bitboard >> pos) & 1:
-            row = 7 - (pos // 8)
-            col = pos % 8
-            board[row][col] = piece_name
+    for piece, bitboard in chessboard.loc.items():
+        #Convert np uint64 to int for bitwise op
+        bitboard = int(bitboard)
+        for pos in range(64):
+            if (bitboard >> pos) & 1: #check if piece at bitboard >> pos (1) ... board pos == name of piece
+        
+                row = 7 - (pos // 8)
+                col = pos % 8
+                board[row][col] = piece    
     return board
 
-"""Map ChessBoard object to 2D array"""
-def chessboard_to_board(chessboard):
-    board = [['..' for _ in range(8)] for _ in range(8)]
-    for piece_name, bitboard in chessboard.pieces.items():
-        board_part = bitboard_to_board(bitboard, piece_name)
-        for row in range(8):
-            for col in range(8):
-                if board_part[row][col] != '..':
-                    board[row][col] = board_part[row][col]
-    return board
+"""Piece Placement"""
+def BoardUpdateVisuals(board):
+    for row in range(8):
+        for col in range(8):
+            piece = board[row][col]
+            if piece != "..":
+                SCREEN.blit(pieces[piece], p.Rect(col * SquareSize, row * SquareSize, SquareSize, SquareSize))
+    return 
 
 """Window + Board"""
 def initialise(chessboard):
@@ -56,9 +46,9 @@ def initialise(chessboard):
     
     open = True 
     while open: 
-        board = chessboard_to_board(chessboard)
+        board = BBLocToBoard(chessboard)
         BoardSquares()
-        BoardUpdateVisuals(board, pieces)
+        BoardUpdateVisuals(board)
 
         for event in p.event.get():
             if event.type == p.QUIT:
@@ -67,23 +57,29 @@ def initialise(chessboard):
                 if event.key == p.K_ESCAPE:
                     open = False
 
-            # Dragging/Movement vvvv WIP
             if event.type == p.MOUSEBUTTONDOWN:
                 x_init, y_init = p.mouse.get_pos()
                 if CheckPieceUnderMouse(x_init, y_init, board):
                     held = board[y_init // SquareSize][x_init // SquareSize]
-                    hold = True
-                    while hold:
+
+                    run = True
+                    while run:
                         p.event.set_grab(True)
                         for event in p.event.get():
                             if event.type == p.MOUSEBUTTONUP:
                                 x, y = p.mouse.get_pos()    
-                                # drop pos                                                
-                                hold = False
-                                p.event.set_grab(False)
-
+                                colDrop, rowDrop = x//SquareSize, y//SquareSize
+                                chessboard.Update(held[1], held[0], (ConvertToBitboard(rowDrop,colDrop)))
+                                p.event.set_grab(False)                                         
+                                run = False
+                
         p.display.flip()
     return
+
+"""Convert Row Col to BitBoard Loc"""
+def ConvertToBitboard(row, col):
+    return np.uint64(1 << ((7-row)*8+col))
+
 
 """Board Pattern"""
 def BoardSquares():
@@ -101,16 +97,6 @@ def loadPieces():
         pieces[piece] = p.transform.scale(p.image.load(f'pixel/{piece}.png'), (SquareSize, SquareSize)) #Scale png to board size
     return pieces
         
-"""Piece Placement"""
-def BoardUpdateVisuals(board, pieces):
-    for row in range(len(board)):
-        for col in range(len(board[row])):
-            if board[row][col] == '..':
-                pass
-            else:
-                SCREEN.blit(pieces[board[row][col]], p.Rect(col * SquareSize, row * SquareSize, SquareSize, SquareSize))
-    return 
-
 """True if piece under mouse"""
 def CheckPieceUnderMouse(x, y, board):
     col = x // SquareSize
