@@ -1,4 +1,4 @@
-# ChessBot
+# ChessBot  - WIP 
 2 Player Chess + ChessAI
 
 My first time creating chess and a chessbot, includes a devlog for your reading pleasure.
