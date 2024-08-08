@@ -1,10 +1,10 @@
-Total Work/Learning Hours: 16
+Total Work/Learning Hours: 24
 
 
 04/08/24 - Project beginnings:
-This project may be too big, and may be too complicated to learn in the 5 days I have given myself - but that will not stop me from trying. By the end of this I hope to have learnt alot about
+This project may be too big, and may be too complicated to learn in the 5 days I have given myself - but that will not stop me from trying. By the end of this I hope to have learnt a lot about
 chess bot mechanics, best move selection, decision tree implementation? and managing a project with multiple unique moving parts that must function as one. This is very exciting for me as I am
-sure there will be alot of problems and learning opportunities each day. 
+sure there will be a lot of problems and learning opportunities each day. 
 I will be updating this log with my daily progress, goals for the next days, challenges and general thoughts as I go through. 
 //
 Today I completed: 
@@ -17,12 +17,12 @@ Today I completed:
 
 05/08/24 - BitBoards and Pieces
 Initial thoughts: Now realising I need to restructure all the code into OOP and change the boards and movement under the hood to use bitboards to make the later stages of alphabeta pruning, minimax 
-and other computations faster. Not feeling too good about this task but I am sure I will learn alot and more coding never hurt anyone. 
+and other computations faster. Not feeling too good about this task but I am sure I will learn a lot and more coding never hurt anyone. 
 
                 **I am quickly realising that this project is turning into a comprehensive study of bitwise operations and bit manipulation**
 
-There was a big learning curve with this session, tomorrow will feel alot easier I'm sure. I look forward to the next steps of implementation where hopefully I will have completed legal move checker! 
-In my mind, this is half the battle as the pruning and board state selection is alot more up my alley :D
+There was a big learning curve with this session, tomorrow will feel a lot easier I'm sure. I look forward to the next steps of implementation where hopefully I will have completed legal move checker! 
+In my mind, this is half the battle as the pruning and board state selection is a lot more up my alley :D
 Final thought from today are that the code feels like a step back as I have lost some features, but have made leaps and bounds in understanding of the methods I will be using moving forwards, so I see 
 this as a win. 
 //
@@ -34,8 +34,17 @@ Today I completed:
 //
 
 
-06/08/24 - 
+07/08/24->08/08/24 - Break 
+Initial thoughts: I have made alot of progress on the learning front but have struggled to convert my fragments of knowledge into a cohesive form. Taking a break from the project - I will come back to it 
+after I get more research done.
 
+I think my current learning road blocks are: 
+    - The lack of learning content in a form I am used to, this has slowed down my learning rate as I am reading many different sources and trying to understand their language and theory without visual examples
+    - Lack of a community to ask for clarification on concepts I do not understand. 
+
+How I intend to overcome these when I return: 
+    - Work on the chess bot to learn more concepts and then work backwards from there
+    - Focus learning on how to select specific pieces and precompute their move maps 
 
 
 
